@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Developer Portfolio</title>
+
+<!-- Bubbly, Creative Font Stack -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --panel-bg: rgba(255, 255, 255, 0.75);
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --accent: #6c5ce7;
+    --accent-hover: #a29bfe;
+    --bubble-shadow: 0 10px 30px rgba(108, 92, 231, 0.15);
+    --hover-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #f0f2f5;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(162, 155, 254, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(253, 121, 168, 0.15) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-main);
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+nav .logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    background: linear-gradient(45deg, var(--accent), #fd79a8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 700;
+    transition: var(--hover-bounce);
+    display: inline-block;
+}
+
+nav a:hover {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 100px 20px 80px 20px;
+}
+
+.hero h1 {
+    font-size: 56px;
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    background: linear-gradient(135deg, #6c5ce7 0%, #fd79a8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero p {
+    font-size: 22px;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 500;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 12%;
+}
+
+section h2 {
+    font-size: 32px;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #fd79a8;
+    bottom: 5px;
+    right: -20px;
+    border-radius: 50%;
+}
+
+.card {
+    background: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: var(--bubble-shadow);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.card p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+}
+.card p:last-child { margin: 0; }
+
+/* PROJECT & SERVICE GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.project, .service-card {
+    background: var(--panel-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 24px;
+    box-shadow: var(--bubble-shadow);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transition: var(--hover-bounce);
+}
+
+.project:hover, .service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(108, 92, 231, 0.25);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.project h3, .service-card h3 {
+    margin: 0 0 10px 0;
+    color: var(--accent);
+    font-size: 22px;
+}
+
+.project p, .service-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* SKILLS BUBBLES */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.skill-bubble {
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    color: var(--text-main);
+    border: 2px solid rgba(108, 92, 231, 0.15);
+    transition: var(--hover-bounce);
+}
+
+.skill-bubble:hover {
+    transform: scale(1.1);
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* TIMELINE FLOW */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--panel-bg);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--bubble-shadow);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.step-num {
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* CONTACT INFO HIGHLIGHT */
+.contact-tag {
+    display: inline-block;
+    background: rgba(108, 92, 231, 0.1);
+    color: var(--accent);
+    padding: 12px 24px;
+    border-radius: 50px;
+    margin: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    border: 2px solid rgba(108, 92, 231, 0.1);
+    transition: var(--hover-bounce);
+}
+
+.contact-tag:hover {
+    transform: scale(1.05);
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+    color: var(--text-muted);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">✨ CreativeDev</div>
+    <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1>Hello, I'm a Developer</h1>
+    <p>Roblox Developer ✨ Game Creator 🧸 UI Designer</p>
+</div>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+        <p>
+            Hi, I’m a passionate developer focused on Roblox games, UI design,
+            and scripting. I enjoy building systems, game mechanics, and creative interfaces.
+        </p>
+        <p>🛠️ <b>Roblox Username:</b> <span class="contact-tag" style="font-size: 16px; padding: 6px 14px;">ShadowJeoffrey</span></p>
+    </div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="skills">
+    <h2>Skills & Toolkit</h2>
+    <div class="card">
+        <p>Here are the core technologies, frameworks, and tools I specialize in to bring experiences to life:</p>
+        <div class="skills-container">
+            <div class="skill-bubble">💻 Luau / Roblox Scripting</div>
+            <div class="skill-bubble">🎨 UI/UX Interface Design</div>
+            <div class="skill-bubble">📦 DataStore Systems</div>
+            <div class="skill-bubble">🌊 Physics & Particle FX</div>
+            <div class="skill-bubble">🔧 Weapon & Tool Systems</div>
+            <div class="skill-bubble">📊 Game Optimization</div>
+            <div class="skill-bubble">🌐 Open Cloud API Configuration</div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+        <div class="project">
+            <h3>🎣 Fishing Game System</h3>
+            <p>A full rod + fish catching system complete with a dynamic luck and item rarity tier engine.</p>
+        </div>
+
+        <div class="project">
+            <h3>🛡️ Admin Panel</h3>
+            <p>Custom, sleek Roblox moderation UI featuring player monitoring tools and game execution states.</p>
+        </div>
+
+        <div class="project">
+            <h3>🎨 Game UI Design</h3>
+            <p>Modern, immersive, and incredibly vibrant user interfaces tailored perfectly for Roblox simulator layouts.</p>
+        </div>
+
+        <div class="project">
+            <h3>🛒 Inventory & Shop Framework</h3>
+            <p>A persistent, modular inventory database backend capable of tracking client-side purchases across multi-place game hubs.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services">
+    <h2>What I Do (Services)</h2>
+    <div class="grid">
+        <div class="service-card">
+            <h3>⚙️ Full System Scripting</h3>
+            <p>Clean, unexploitable server-to-client frameworks built completely from scratch using up-to-date modern safety practices.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>🖼️ Visual Frontends</h3>
+            <p>Scalable user designs created directly inside Roblox Studio that adapt flawlessly to mobile, tablet, console, and desktop views.</p>
+        </div>
+
+        <div class="service-card">
+            <h3>🚀 Game Polishing</h3>
+            <p>Fixing structural lag bottlenecks, memory leaks, script issues, and optimizing overall assets to boost overall frame rates.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WORKFLOW TIMELINE SECTION -->
+<section id="workflow">
+    <h2>My Workflow</h2>
+    <div class="timeline">
+        <div class="timeline-step">
+            <div class="step-num">1</div>
+            <div>
+                <b style="font-size: 18px; color: var(--accent);">Planning & Concepting</b>
+                <p style="margin: 5px 0 0 0; color: var(--text-muted);">Mapping out game loops, structuring script hierarchies, and finalizing project scope details.</p>
+            </div>
+        </div>
+        <div class="timeline-step">
+            <div class="step-num">2</div>
+            <div>
+                <b style="font-size: 18px; color: var(--accent);">Development & Assembly</b>
+                <p style="margin: 5px 0 0 0; color: var(--text-muted);">Writing efficient code blocks, setting layout properties, and creating clean responsive behaviors.</p>
+            </div>
+        </div>
+        <div class="timeline-step">
+            <div class="step-num">3</div>
+            <div>
+                <b style="font-size: 18px; color: var(--accent);">Testing & QA Fixes</b>
+                <p style="margin: 5px 0 0 0; color: var(--text-muted);">Stress-testing network replication limits, fixing back-end bugs, and polishing general responsiveness.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section id="testimonials">
+    <h2>Vouches & Feedback</h2>
+    <div class="grid">
+        <div class="card">
+            <p style="font-style: italic; color: var(--text-muted);">"Incredibly fast delivery. The custom admin systems were cleanly written, thoroughly commented, and completely modular!"</p>
+            <b style="color: var(--accent);">— Studio Manager / Builder</b>
+        </div>
+        <div class="card">
+            <p style="font-style: italic; color: var(--text-muted);">"The user interface layouts transformed our game completely. Highly responsive across mobile phone environments."</p>
+            <b style="color: var(--accent);">— Lead Project Producer</b>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <div class="card" style="text-align: center; padding: 40px 20px;">
+        <p style="font-size: 22px; font-weight: 700; margin-bottom: 25px;">Let's build something amazing together!</p>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+            <span class="contact-tag">📧 bradlineibrahim@gmail.com</span>
+            <span class="contact-tag">💬 bnks_5 on Discord</span>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 My Developer Portfolio • Crafted with Creativity</p>
+</footer>
+
+</body>
+</html>
